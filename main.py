@@ -19,21 +19,17 @@ def cli(handle, length):
     get_username(length, handle)
 
 
-def hello(name):
-    click.echo(f"hello {name}!")
+def hello(handle):
+    click.echo(f"hello {handle}!")
 
 
 def get_username(length, handle):
     username = ''
-    fpaths = []
+    words = []
     for filename in os.listdir(DIRECTORY):
         f = os.path.join(DIRECTORY, filename)
         if os.path.isfile(f):
-            fpaths.append(f)
-
-    words = []
-    for fpath in fpaths:
-        words = words + get_words(fpath)
+            words = words + get_words(f)
 
     random.shuffle(words)
 
